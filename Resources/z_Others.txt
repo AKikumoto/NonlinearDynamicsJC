@@ -1,0 +1,7 @@
+Math
+
+3b1b on taylor series expansion 
+https://www.youtube.com/watch?v=3d6DsjIBzJ4
+
+Math for ML
+https://gwthomas.github.io/docs/math4ml.pdf
