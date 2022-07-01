@@ -1,0 +1,74 @@
+11:03:24 From Apoorva Bhandari to Atsushi Kikumoto(Direct Message):
+	wait till 11.05?
+11:03:29 From Apoorva Bhandari to Atsushi Kikumoto(Direct Message):
+	or longer?
+11:06:08 From Apoorva Bhandari to Atsushi Kikumoto(Direct Message):
+	lets start. people will come when they can.
+11:53:11 From Harrison Ritz (he/him) to Everyone:
+	good 3b1b on taylor series expansion https://www.youtube.com/watch?v=3d6DsjIBzJ4
+11:56:01 From Rex to Everyone:
+	tbh, pretty much 90% of physics is taking taylor series to the 1st order ;)
+12:06:53 From Haley Keglovits (she/her) to Everyone:
+	just a shoutout to a summary notes on math for ml a friend wrote which I frequently reference for definitions like jacobian/hessian -- some is very basic but his coverage is good https://gwthomas.github.io/docs/math4ml.pdf
+12:07:22 From Lakshmi Narasimhan Govindarajan to Everyone:
+	nice!!!!
+12:13:23 From Lakshmi Narasimhan Govindarajan to Everyone:
+	also if you know something about convexity, you can tell something about the global-ness or uniqueness of these extrema
+12:13:32 From Lakshmi Narasimhan Govindarajan to Everyone:
+	(convexity given by hessian)
+12:13:43 From Lakshmi Narasimhan Govindarajan to Everyone:
+	taggin on Haley's point
+12:17:49 From Lakshmi Narasimhan Govindarajan to Everyone:
+	saddle points also have the notion of stability. so you could be in an unstable saddle too
+12:18:17 From Haley Keglovits (she/her) to Everyone:
+	oh interesting thats helpful
+12:20:27 From Rex to Everyone:
+	i think in practice, you will rarely hit saddle points (bc that requires quite a bit of fine-tuning to happen); what normally happens is that you are drawn to them before being pushed away
+12:20:44 From Haley Keglovits (she/her) to Everyone:
+	does the stability of the saddle point change how likely you are to hit it?
+12:22:53 From Rex to Everyone:
+	not really. the thing is, to hit the saddle point, you'd have to lie exclusively on the attractive directions of motion w zero displacement along the repulsive directions -- that requires precise fine-tuning, which rarely happens in practice. that's why it's really difficult to hit them.
+12:24:28 From Haley Keglovits (she/her) to Everyone:
+	ah I see, thanks
+12:24:36 From Rex to Everyone:
+	e.g. if you have a 10D saddle point, but only 1 direction was repulsive, you need to guarantee that your phase vector lies completely orthogonal to that 1D direction. any slight error will lead ultimately to repulsion.
+12:25:39 From Rex to Everyone:
+	but it's this attractive-repulsive dynamics that makes them quite important
+12:26:08 From Haley Keglovits (she/her) to Everyone:
+	general question what is the general internal dimensionality of modern psych-task-solving networks?
+12:26:38 From Haley Keglovits (she/her) to Everyone:
+	I was thinking of a case with larger step sizes and a cost function which focuses on one dimension at a time, but that I guess is so very unlikely in these systems as to not be interesting
+12:27:02 From Apoorva Bhandari to Everyone:
+	the linear dimension is usually as high as allowed by the task. the intrinsic dimension depends on the solution - could be a lot lower.
+12:27:02 From Haley Keglovits (she/her) to Everyone:
+	** dim in that is it a 10, 100, 1000, plus 🙂
+12:27:31 From Apoorva Bhandari to Everyone:
+	as an example, the Mante et al. paper has 100 units.
+12:37:10 From matthew nassar to Everyone:
+	exX1=-2:.1:2
+	exX2=-2:.1:2
+	
+	
+	
+	for i = 1:length(exX1)
+	    for j = 1:length(exX2)
+	        x_1= exX2(j).* 1-exX1(i)^2;
+	        x_2= (exX1(i))./2 - exX2(j)
+	        q_x(i,j)= .5.*norm([x_1; x_2])^2;
+	    end
+	end
+	
+	hold on
+	imagesc(exX1, exX2, q_x)
+	
+	[I,J]=find(q_x==0)
+	
+	plot(exX1(I), exX2(J), 'or', 'lineWidth', 4)
+12:37:53 From Lakshmi Narasimhan Govindarajan to Everyone:
+	VScode has a "live" edit feature
+12:38:01 From Lakshmi Narasimhan Govindarajan to Everyone:
+	where a bunch of us can work on it at the same time
+12:38:05 From Lakshmi Narasimhan Govindarajan to Everyone:
+	might be cool to try
+12:38:41 From Haley Keglovits (she/her) to Everyone:
+	atom has one too through github but I think would have to be python
