@@ -5,21 +5,12 @@
 # ------------------------------------------------------------------------------
 ### Note:
 ### LIBRARIES/PACKAGES ---------------------------------------------------------
-import sys
-import numpy as np
-import pandas as pd
-import torch.utils.data as data
-sys.path.append('/Tasks')
-
-### Note:
-### LIBRARIES/PACKAGES ---------------------------------------------------------
 import numpy as np
 import sys
 import pandas as pd
 import torch
 from PIL import Image
 import sklearn.datasets # To generate the dataset
-sys.path.append('/Tasks')
 
 ### HANDLING DATA --------------------------------------------------------------
 class D_BASEDATA(torch.utils.data.Dataset):
@@ -45,8 +36,8 @@ class D_BASEDATA(torch.utils.data.Dataset):
         #y = self.labels[ID]
 
         # Select sample from randomly simulated data
-        X, t = self.simulate(index)
-        return X, t
+        x, t = self.simulate(index)
+        return x, t
 
     def simulate(self, index):
         'Method to generate data(x) and target(y)'
@@ -118,10 +109,14 @@ class D_sinewave_pattern(D_BASEDATA):
     (t) = continuous sine wave
     """
     def __init__(self, seed = 612, max_sample = 1000, n_time = 50, n_freq = 10):
+        # Initialize
         np.random.seed(seed)
         self.max_sample = max_sample
         self.n_time = n_time
         self.n_freq = n_freq
+
+        # Prepare one batch (or called every _getitem__)?
+        # self.simulate()
 
     def __len__(self):
         return self.max_sample
@@ -154,22 +149,25 @@ class D_nbit_flipflop(D_BASEDATA):
     (t) = n bits of correct states
     """
     def __init__(self, seed = 612, max_sample = 1, n_time = 500, n_rest = 50, n_bit = 3):
+        # Initialize
         np.random.seed(seed)
         self.n_time = n_time
         self.n_rest = n_rest
         self.n_bit = n_bit
         self.max_sample = max_sample
-        self.prep_batch()
+
+        # Prepare one batch (or called every _getitem__)?
+        # self.simulate()
 
     def __len__(self):
         return self.max_sample
 
-    def prep_batch(self):
+    def simulate(self):
         self.items = {}
         X_batch = np.zeros((self.n_time, self.n_bit))
         t_batch = np.zeros((self.n_time, self.n_bit))
 
-        for m in range(n_bit):
+        for m in range(self.n_bit):
             X, t = np.zeros(self.n_time), np.zeros(self.n_time)
 
             # Prepare flip flop
@@ -192,60 +190,78 @@ class D_nbit_flipflop(D_BASEDATA):
 
         self.items = (X_batch, t_batch)
 
-    def __getitem__(self, item):
+    def __getitem__(self, index):
+        self.simulate() # resample items
         return self.items[0], self.items[1]
 
 ### PSYCHOLOGY TASKS -----------------------------------------------------------
 # task class must have following methods:
 # - initial settings: input and output mapping
 # - simulate
-
-# Action rule-selection task
+# For any psychology tasks with design file
 class D_BASETASK(D_BASEDATA):
-    def __init__(self, **kwargs):
+    def __init__(self, s):
         # Conditions of the task in Task_Design file
-        self.nndir = kwargs.get('nndir')
-        self.taskdir = kwargs.get('taskdir')
-        self.design = pd.read_csv(kwargs.get('taskdir') + '/Task_Design.txt', sep="\t")
+        np.random.seed(612)
+        for i, (k, v) in enumerate(s.items()):setattr(self, k, v)
+        self.design = pd.read_csv(self.taskdir + '/Task_Design.txt', sep="\t")
         self.units = design_to_units(self.design)
 
-    def simulate(self, s):
-        # Default settings
-        if s.get('t_label') is None: s['t_label'] = 'OUTPUT'
-        if s.get('n_batch') is None: s['n_batch'] = 100
-        if s.get('noiseF') is None: s['noiseF'] = lambda x : np.random.normal(0, 1, x) # noise for informative units
+        # Dedault settings
+        if s.get('n_batch') is None: self.n_batch = 1 # use this to generate data wihtout dataloader
+        if s.get('t_label') is None: self.t_label = 'OUTPUT'
+        if s.get('units_events') is None: self.units_events = None
+        if s.get('noiseF') is None: self.noiseF = lambda x : np.random.normal(0, 1, x)
 
+        # Prepare one batch (or called every _getitem__)?
+        #self.data, self.t, self.cl = self.simulate()
+
+    def simulate(self):
         # Initialize
-        d, u, b = self.design, self.units, s.get('n_batch')
-        u_on, u_ev, tL = s.get('units_on'), s.get('units_events'), s.get('timeL')
+        s, d, u, b = self, self.design, self.units, self.n_batch
+        u_on, u_ev, tL = self.units_on, self.units_events, self.timeL
 
         # Randomly sample trials conditions and correct labels
         cond = np.random.randint(d.shape[0], size = b)
         #cond = np.tile(range(d.shape[0]),int(k['n_batch']/d.shape[0]))
-        data = np.vstack((cond.copy(), d[s.get('t_label')][cond]))
+        data = np.vstack((cond.copy(), d[self.t_label][cond]))
         if u_ev is not None: data = data + np.zeros((len(tL), *data.shape))
         if u_ev is not None: data = np.transpose(data,(1, 0, 2))
 
         # Prepare all requested units (this is somewhat sloww... need to update it!)
         for key in u_on.keys():
-            uID = np.random.randint(u[key].shape[1], size = u_on[key])
+            #uID = np.random.randint(u[key].shape[1], size = u_on[key])# Random (note this reqires "pre-sample")
+            uID = np.array(range(u[key].shape[1])).repeat(u_on[key])
 
             for i, v in enumerate(uID):
                 a = u[key][cond, v]
                 t = np.ones((1, b)) if u_ev is None else np.tile(u_ev[key], (b, 1)).T
                 a = a * t # unit pref X activation template
                 if u_ev is not None: a = a[np.newaxis, :, :]
-                a += s['noiseF'](a.shape)
+                a += self.noiseF(a.shape)
                 data = np.concatenate((data, a), axis = 0)
 
         # Rectangular activatoion
         # 2D output (batch, columns [cond, output, units])
         # 3D output (batch, time samples, columns [cond, output, units])
         data = np.transpose(data)
-        cdim = data.ndim -1 # last column is always "condition"
-        data_dl = np.take(data, np.array([0, 1]), axis = cdim)
-        data_u = np.take(data, range(2, data.shape[cdim]), axis = cdim)
-        return data, data_dl, data_u
+        self.cdim = data.ndim -1 # last column is always "condition"
+        ts = np.take(data, np.array([0, 1]), axis = self.cdim) -1 # -1 for python indexing
+        x = np.take(data, range(2, data.shape[self.cdim]), axis = self.cdim)
+        return data, ts, x
+
+    def __len__(self):
+        'Method for PyTorch DataLoader: Denotes the total number of samples (keep it small)'
+        return 2000
+
+    def __getitem__(self, index):
+        _, ts , x = self.simulate() # resample items
+        cl = np.take(ts, 0, axis = self.cdim) # condition label
+        #t = np.take(ts, 1, axis = self.cdim) # target label (repeated over time)
+        t = np.unique(np.take(ts, 1, axis = self.cdim)) # one label
+        x, t, cl = map(np.squeeze, (x, t, cl))
+        t = t[..., np.newaxis] # keep trarget dim fixed
+        return x, t, cl
 
 
 # Takes in the design file of a task and transform to hypothetical units
