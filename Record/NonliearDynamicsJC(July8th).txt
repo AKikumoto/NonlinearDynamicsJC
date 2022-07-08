@@ -1,0 +1,4 @@
+11:24:39 From Apoorva Bhandari to Everyone : https://www.sciencedirect.com/science/article/pii/S0959438821001276
+11:24:43 From Apoorva Bhandari to Everyone : Robert's paper.
+11:36:25 From Harrison Ritz (he/him) to Everyone : GRU vs LSTM: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
+12:01:21 From matthew nassar to Everyone : Gotta run, very cool stuff!
