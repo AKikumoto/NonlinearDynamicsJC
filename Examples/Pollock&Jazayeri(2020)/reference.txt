@@ -1,0 +1,3 @@
+Pollock, E., & Jazayeri, M. (2020). Engineering recurrent neural networks from task-relevant manifolds and dynamics. PLoS Computational Biology, 16(8), e1008128.
+
+https://github.com/elipollock/EMPJ
