@@ -9,9 +9,11 @@
 -Kim, J. Z., Soffer, J. M., Kahn, A. E., Vettel, J. M., Pasqualetti, F., & Bassett, D. S. (2018). Role of Graph Architecture in Controlling Dynamical Networks with Applications to Neural Systems. Nature Physics, 14, 91–98.
 -Lynn, C. W., & Bassett, D. S. (2019). The physics of brain network structure, function and control. Nature Reviews Physics, 1(5), 318–332.
 -https://www.youtube.com/watch?v=bCQQ7icqPWg
+-Kamiya, S., Kawakita, G., Sasai, S., Kitazono, J., & Oizumi, M. (2022). Optimal Control Costs of Brain State Transitions in Linear Stochastic Systems. In bioRxiv (p. 2022.05.01.490252). https://doi.org/10.1101/2022.05.01.490252
 -Mante, V., Sussillo, D., Shenoy, K. V., & Newsome, W. T. (2013). Context-dependent computation by recurrent dynamics in prefrontal cortex. Nature, 503(7474), 78–84.
 -Egger, S. W., Remington, E. D., Chang, C.-J., & Jazayeri, M. (2019). Internal models of sensorimotor integration regulate cortical dynamics. Nature Neuroscience. https://doi.org/10.1038/s41593-019-0500-6
 -Sussillo, D., Churchland, M. M., Kaufman, M. T., & Shenoy, K. V. (2015). A neural network that finds a naturalistic solution for the production of muscle activity. Nature Neuroscience, 18(7), 1025–1033.
+-Disentangling with Biological Constraints: A Theory of Functional Cell Types
 
 
 <RNN contrains>
