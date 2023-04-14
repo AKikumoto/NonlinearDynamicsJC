@@ -1,7 +1,8 @@
 # NonlinearDynamicsJC
 Record of journal club for nonlinear dynamics of artificial/biological networks
 
-# Papers studied
+# Papers studied 
+# 2022
 Sussillo, D., & Barak, O. (2013). Opening the black box: low-dimensional dynamics in high-dimensional recurrent neural networks. Neural Computation, 25(3), 626–649.<br/>
 
 Pollock, E., & Jazayeri, M. (2020). Engineering recurrent neural networks from task-relevant manifolds and dynamics. PLoS Computational Biology, 16(8), e1008128.<br/>
@@ -21,4 +22,15 @@ Superposition: https://transformer-circuits.pub/2022/toy_model/index.html: <br/>
 Rajalingham, R., Piccato, A., & Jazayeri, M. (2022). Recurrent neural networks with explicit representation of dynamic latent variables can mimic behavioral patterns in a physical inference task. Nature Communications, 13(1), 5865.<br/>
 
 Pagan, M., Tang, V. D., Aoi, M. C., Pillow, J. W., Mante, V., Sussillo, D., & Brody, C. D. (2022). A new theoretical framework jointly explains behavioral and neural variability across subjects performing flexible decision-making. In bioRxiv (p. 2022.11.28.518207). https://doi.org/10.1101/2022.11.28.518207<br/>
+
+# 2023
+Linsley, D., & Karkada Ashok, A. (2020). Stable and expressive recurrent vision models. Advances in. 
+
+Galgali, A. R., Sahani, M., & Mante, V. (2023). Residual dynamics resolves recurrent contributions to neural computation. Nature Neuroscience. https://doi.org/10.1038/s41593-022-01230-2
+
+Beiran, M., Meirhaeghe, N., Sohn, H., Jazayeri, M., & Ostojic, S. (2023). Parametric control of flexible timing through low-dimensional neural manifolds. Neuron. https://doi.org/10.1016/j.neuron.2022.12.016
+
+Mastrogiuseppe, F., & Ostojic, S. (2018). Linking connectivity, dynamics, and computations in low-rank recurrent neural networks. Neuron, 99(3), 609–623.e29.
+
+Smith, J. T. H., Linderman, S. W., & Sussillo, D. (2021). Reverse engineering recurrent neural networks with Jacobian switching linear dynamical systems. In arXiv [cs.LG]. arXiv. https://proceedings.neurips.cc/paper/2021/file/8b77b4b5156dc11dec152c6c71481565-Paper.pdf
 
