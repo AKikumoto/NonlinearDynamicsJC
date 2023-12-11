@@ -34,3 +34,18 @@ Mastrogiuseppe, F., & Ostojic, S. (2018). Linking connectivity, dynamics, and co
 
 Smith, J. T. H., Linderman, S. W., & Sussillo, D. (2021). Reverse engineering recurrent neural networks with Jacobian switching linear dynamical systems. In arXiv [cs.LG]. arXiv. https://proceedings.neurips.cc/paper/2021/file/8b77b4b5156dc11dec152c6c71481565-Paper.pdf
 
+Ratzon, A., Derdikman, D., & Barak, O. (2023). Representational drift as a result of implicit regularization. In bioRxiv (p. 2023.05.04.539512). https://doi.org/10.1101/2023.05.04.539512
+
+Driscoll, L., Shenoy, K., & Sussillo, D. (2022). Flexible multitask computation in recurrent networks utilizes shared dynamical motifs. In bioRxiv (p. 2022.08.15.503870). https://doi.org/10.1101/2022.08.15.503870
+
+RNNs strike back
+https://adrian-valente.github.io/2023/10/03/linear-rnns.html
+
+Fortunato, C., Bennasar-Vázquez, J., Park, J., Chang, J. C., Miller, L. E., Dudman, J. T., Perich, M. G., & Gallego, J. A. (2023). Nonlinear manifolds underlie neural population activity during behaviour. In bioRxiv (p. 2023.07.18.549575). https://doi.org/10.1101/2023.07.18.549575
+
+Durstewitz, D., Koppe, G., & Thurm, M. I. (2023). Reconstructing computational system dynamics from neural data with recurrent neural networks. Nature Reviews. Neuroscience. https://doi.org/10.1038/s41583-023-00740-7
+
+Lake, B. M., & Baroni, M. (2023). Human-like systematic generalization through a meta-learning neural network. Nature. https://doi.org/10.1038/s41586-023-06668-3
+
+Whittington, J. C. R., Dorrell, W., Behrens, T. E. J., Ganguli, S., & El-Gaby, M. (2023). On prefrontal working memory and hippocampal episodic memory: Unifying memories stored in weights and activation slots. In bioRxiv (p. 2023.11.05.565662). https://doi.org/10.1101/2023.11.05.565662
+
