@@ -2,6 +2,13 @@
 Record of journal club for nonlinear (& linear) dynamics of artificial/biological networks
 
 # Papers read 
+# 2025
+Soldado-Magraner, J., Mante, V., & Sahani, M. (2023). Inferring context-dependent computations through linear approximations of prefrontal cortex dynamics. In bioRxiv (p. 2023.02.06.527389). https://doi.org/10.1101/2023.02.06.527389
+
+Oby, E. R., Degenhart, A. D., Grigsby, E. M., Motiwala, A., McClain, N. T., Marino, P. J., Yu, B. M., & Batista, A. P. (2025). Dynamical constraints on neural population activity. Nature Neuroscience, 1–11.
+
+El-Gaby, M., Harris, A. L., Whittington, J. C. R., Dorrell, W., Bhomick, A., Walton, M. E., Akam, T., & Behrens, T. E. J. (2024). A cellular basis for mapping behavioural structure. Nature, 1–10.
+
 # 2024
 Luo, T. Z., Kim, T. D., Gupta, D., Bondy, A. G., Kopec, C. D., Elliot, V. A., DePasquale, B., & Brody, C. D. (2023). Transitions in dynamical regime and neural mode underlie perceptual decision-making. bioRxiv : The Preprint Server for Biology. https://doi.org/10.1101/2023.10.15.562427
 
